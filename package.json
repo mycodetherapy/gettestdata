@@ -2,11 +2,14 @@
   "name": "gettestdata",
   "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.12.7"
+  }
 }

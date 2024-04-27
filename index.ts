@@ -1,12 +1,25 @@
-"use strict";
-const getTestData = (count, fieldCounts) => {
-    const testData = [];
-    const generateUniqueString = () => Math.random().toString(36).substring(2, 10);
-    const generateUniqueNumber = () => Math.floor(Math.random() * 100) + 1;
-    const generateData = () => {
-        const data = {};
-        const numberKeys = {};
-        const booleanKeys = {};
+interface FieldCounts {
+    string?: number;
+    number?: number;
+    boolean?: number;
+}
+
+interface TestData {
+    [key: string]: string | number | boolean;
+}
+
+const getTestData = (count: number, fieldCounts: FieldCounts): TestData[] => {
+    const testData: TestData[] = [];
+
+    const generateUniqueString = (): string => Math.random().toString(36).substring(2, 10);
+
+    const generateUniqueNumber = (): number => Math.floor(Math.random() * 100) + 1;
+
+    const generateData = (): TestData => {
+        const data: TestData = {};
+        const numberKeys: { [key: string]: boolean } = {};
+        const booleanKeys: { [key: string]: boolean } = {};        
+
         Object.entries(fieldCounts).forEach(([type, count]) => {
             switch (type) {
                 case 'string':
@@ -40,9 +53,12 @@ const getTestData = (count, fieldCounts) => {
         });
         return data;
     };
+
     for (let i = 0; i < count; i++) {
         testData.push(generateData());
     }
+
     return testData;
 };
+
 module.exports = getTestData;
